@@ -9,6 +9,6 @@ import (
 func main() {
 	word := "I"
 
-	ret := pigl.Pigx([]byte(word))
-	fmt.Println(string(ret))
+	ret := pigl.Translate(word)
+	fmt.Println(ret)
 }

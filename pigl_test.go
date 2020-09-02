@@ -2,8 +2,7 @@ package pigl
 
 import "testing"
 
-func Test_pigx(t *testing.T) {
-
+func Test_Translate(t *testing.T) {
 	tests := []struct {
 		word string
 		want string
@@ -32,14 +31,21 @@ func Test_pigx(t *testing.T) {
 		{"ends", "endsay"},
 		{"honest", "onesthay"},
 		{"I", "Iay"},
+		{"scheme", "emeschay"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.word, func(t *testing.T) {
-			got := string(Pigx([]byte(tt.word)))
+			got := Translate(tt.word)
 
 			if got != tt.want {
-				t.Errorf("Pigl() = %v, want %v", got, tt.want)
+				t.Errorf("Translate() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func Benchmark(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Translate("scheme")
 	}
 }
