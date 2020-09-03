@@ -7,8 +7,11 @@ import (
 )
 
 func main() {
-	word := "I"
+	word := "scheme"
+	sent := "scheme is really cool"
 
-	ret := pigl.Translate(word)
-	fmt.Println(ret)
+	pw := pigl.TranslateWord(word)
+	ps := pigl.TranslateSentence(sent)
+	fmt.Println(pw)
+	fmt.Println(ps)
 }
