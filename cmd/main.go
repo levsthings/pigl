@@ -14,4 +14,10 @@ func main() {
 	ps := pigl.TranslateSentence(sent)
 	fmt.Println(pw)
 	fmt.Println(ps)
+
+	translate := new(pigl.Translate)
+	pw2 := translate.Word("scheme")
+	ps2 := translate.Sentence("scheme is really cool")
+	fmt.Println(pw2)
+	fmt.Println(ps2)
 }

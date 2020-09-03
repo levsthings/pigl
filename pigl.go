@@ -5,8 +5,8 @@ import "strings"
 var pig []byte
 
 // TranslateWord translates an ASCII word into pig latin
-func TranslateWord(word string) string {
-	piglr([]byte(word))
+func TranslateWord(input string) string {
+	piglr([]byte(input))
 
 	return string(pig)
 }
