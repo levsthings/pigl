@@ -15,7 +15,7 @@ func main() {
 	fmt.Println(pw)
 	fmt.Println(ps)
 
-	translate := new(pigl.Translate)
+	translate := new(pigl.Translator)
 	pw2 := translate.Word("scheme")
 	ps2 := translate.Sentence("scheme is really cool")
 	fmt.Println(pw2)

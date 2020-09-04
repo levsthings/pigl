@@ -4,16 +4,21 @@ import (
 	"strings"
 )
 
-type Translate struct {
+// Translator translates English words to Pig Latin.
+// It only works with ASCII characters, and does not
+// support punctuation characters.
+type Translator struct {
 	buff []byte
 }
 
-func (t *Translate) Word(input string) string {
+// Word method is used for translating a single word.
+func (t *Translator) Word(input string) string {
 	t.pigify([]byte(input))
 	return string(t.buff)
 }
 
-func (t *Translate) Sentence(input string) string {
+// Sentence method is used for translating sentences.
+func (t *Translator) Sentence(input string) string {
 	words := strings.Split(input, " ")
 
 	var sentence []string
@@ -27,7 +32,8 @@ func (t *Translate) Sentence(input string) string {
 	return res
 }
 
-func (t *Translate) pigify(word []byte) {
+// conjure pigify for pigification.
+func (t *Translator) pigify(word []byte) {
 	switch word[0] {
 	case 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U':
 		t.buff = append(word, 'a', 'y')

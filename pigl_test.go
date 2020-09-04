@@ -66,6 +66,7 @@ func Test_TranslateSentence(t *testing.T) {
 		})
 	}
 }
+
 func Benchmark_Translate(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		TranslateWord("scheme")
@@ -80,14 +81,14 @@ func Benchmark_TranslateSentence(b *testing.B) {
 }
 
 func Benchmark_Translator(b *testing.B) {
-	translate := new(Translate)
+	translate := new(Translator)
 	for i := 0; i < b.N; i++ {
 		translate.Word("scheme")
 	}
 }
 
 func Benchmark_TranslatorSentence(b *testing.B) {
-	translate := new(Translate)
+	translate := new(Translator)
 
 	for i := 0; i < b.N; i++ {
 		translate.Sentence("smile string stupid glove trash floor store pig latin banana will butler happy duck me eat omelet are egg explain always ends honest I scheme")
