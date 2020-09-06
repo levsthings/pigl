@@ -35,6 +35,7 @@ func Test_TranslateWord(t *testing.T) {
 		{"honest", "onesthay"},
 		{"I", "Iay"},
 		{"scheme", "emeschay"},
+		{"is", "isay"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.word, func(t *testing.T) {
@@ -52,8 +53,8 @@ func Test_TranslateSentence(t *testing.T) {
 		sentence string
 		want     string
 	}{
-		{"smile string stupid glove trash floor store pig latin banana will butler happy duck me eat omelet are egg explain always ends honest I scheme",
-			"ilesmay ingstray upidstay oveglay ashtray oorflay orestay igpay atinlay ananabay illway utlerbay appyhay uckday emay eatay omeletay areay eggay explainay alwaysay endsay onesthay Iay emeschay"},
+		{"smile string stupid glove trash floor store pig latin banana will butler happy duck me eat omelet are egg explain always ends honest I scheme is",
+			"ilesmay ingstray upidstay oveglay ashtray oorflay orestay igpay atinlay ananabay illway utlerbay appyhay uckday emay eatay omeletay areay eggay explainay alwaysay endsay onesthay Iay emeschay is"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.sentence, func(t *testing.T) {
