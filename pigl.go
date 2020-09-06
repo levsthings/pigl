@@ -1,38 +1,45 @@
 package pigl
 
-import "strings"
+import (
+	"strings"
+)
 
-var pig []byte
-
-// TranslateWord translates an ASCII word into pig latin
-func TranslateWord(input string) string {
-	piglr([]byte(input))
-
-	return string(pig)
+// Translator translates English words to Pig Latin.
+// It only works with ASCII characters, and does not
+// support punctuation characters.
+type Translator struct {
+	buff []byte
 }
 
-// TranslateSentence translates an ASCII sentence into pig latin. It does not
-// handle trailing whitespaces or punctuations.
-func TranslateSentence(input string) string {
+// Word method is used for translating a single word.
+func (t *Translator) Word(input string) string {
+	t.pigify([]byte(input))
+
+	return string(t.buff)
+}
+
+// Sentence method is used for translating sentences.
+func (t *Translator) Sentence(input string) string {
 	words := strings.Split(input, " ")
 
 	var sentence []string
 	for _, word := range words {
-		piglr([]byte(word))
-		sentence = append(sentence, string(pig))
-		pig = nil
+		t.pigify([]byte(word))
+		sentence = append(sentence, string(t.buff))
+		t.buff = nil
 	}
 
 	res := strings.Join(sentence, " ")
 	return res
 }
 
-func piglr(word []byte) {
+// conjure pigify for pigification.
+func (t *Translator) pigify(word []byte) {
 	switch word[0] {
 	case 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U':
-		pig = append(word, 'a', 'y')
+		t.buff = append(word, 'a', 'y')
 	default:
-		pig = append(word[1:], word[0])
-		piglr(pig)
+		t.buff = append(word[1:], word[0])
+		t.pigify(t.buff)
 	}
 }
